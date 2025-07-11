@@ -1,0 +1,47 @@
+#back {
+  background-color: #f0f8ff; /* light blue background */
+  padding: 40px 0;
+}
+
+.hero-section {
+  background: linear-gradient(to right, #007bff, #339af0);
+  color: white;
+  padding: 60px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: #007bff;
+  font-weight: bold;
+}
+
+h3 {
+  color: #0056b3;
+  margin-bottom: 25px;
+}
