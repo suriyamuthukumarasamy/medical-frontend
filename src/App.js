@@ -20,14 +20,13 @@ import MyOrders from './pages/MyOrders';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [role, setRole] = useState(null);
-  const [loading, setLoading] = useState(true); //  NEW: loading state
+  const [loading, setLoading] = useState(true);
 
   const location = useLocation();
 
   const hideLayout =
     location.pathname === '/loginIn' ||
-    location.pathname === '/' ||
-    location.pathname === '/cart';
+    location.pathname === '/';
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -42,10 +41,9 @@ function App() {
       setRole(null);
     }
 
-    setLoading(false); //  authentication check complete
+    setLoading(false);
   }, []);
 
-  //  Wait until authentication check is complete
   if (loading) {
     return <div style={{ padding: 50, textAlign: 'center' }}>🔄 Loading...</div>;
   }
@@ -148,7 +146,7 @@ function App() {
         />
       </Routes>
 
-      <Footer />
+      {!hideLayout && <Footer />}
     </CartProvider>
   );
 }
