@@ -54,7 +54,7 @@ const MyOrders = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.delete(
-        `http://localhost:5000/api/orders/${orderId}/items/${itemId}`,
+        `https://medical-backend-teal.vercel.app/api/orders/${orderId}/items/${itemId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
