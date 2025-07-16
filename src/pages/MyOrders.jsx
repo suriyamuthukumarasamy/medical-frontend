@@ -17,7 +17,7 @@ const MyOrders = () => {
     }
 
     try {
-      const res = await axios.get("http://localhost:5000/api/orders/my", {
+      const res = await axios.get("https://medical-backend-teal.vercel.app/api/orders/my", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrders(res.data);
@@ -32,7 +32,7 @@ const MyOrders = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+      await axios.delete(`https://medical-backend-teal.vercel.app/api/orders/${orderId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrders((prev) => prev.filter((order) => order._id !== orderId));
