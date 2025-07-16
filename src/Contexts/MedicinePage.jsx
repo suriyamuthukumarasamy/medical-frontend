@@ -26,7 +26,7 @@ const MedicinePage = () => {
 
       console.log("🛒 Sending order:", orderData);
 
-      await axios.post("http://localhost:5000/api/orders", orderData, {
+      await axios.post("https://medical-backend-teal.vercel.app/api/orders", orderData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
