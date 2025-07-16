@@ -30,7 +30,7 @@ const Register = () => {
       const response = await axios.post(
         "https://medical-backend-teal.vercel.app/api/users/register",
         formData,
-        { withCredentials: true }
+        // { withCredentials: true }
       );
 
       if (response.status === 200 || response.status === 201) {
