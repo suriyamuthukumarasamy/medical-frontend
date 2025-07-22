@@ -14,10 +14,7 @@ const LoginIn = () => {
     try {
       const res = await axios.post(
         "https://medical-backend-teal.vercel.app/api/users/login",
-        {
-          email,
-          password,
-        }
+        { email, password }
       );
 
       const { token, user } = res.data;
@@ -29,19 +26,16 @@ const LoginIn = () => {
 
       alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
 
-      let message = `✅ Welcome ${user.name}! You are logged in as ${user.role}.`;
-
+      // Navigate immediately after alert
       if (user.role === "admin") {
         navigate("/admin");
-        alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
       } else if (user.role === "customer" || user.role === "user") {
         navigate("/home");
-        alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
       } else {
         navigate("/");
-        alert(`✅ Welcome ${user.name}!`);
       }
 
+      // Set session expiration
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("token_expiry");
@@ -67,9 +61,7 @@ const LoginIn = () => {
         {errorMessage && <div style={styles.errorBox}>{errorMessage}</div>}
 
         <form onSubmit={handleLogin} style={styles.form} autoComplete="on">
-          <label htmlFor="email" style={styles.label}>
-            Email
-          </label>
+          <label htmlFor="email" style={styles.label}>Email</label>
           <input
             type="email"
             id="email"
@@ -81,9 +73,7 @@ const LoginIn = () => {
             autoComplete="email"
           />
 
-          <label htmlFor="password" style={styles.label}>
-            Password
-          </label>
+          <label htmlFor="password" style={styles.label}>Password</label>
           <input
             type="password"
             id="password"
@@ -95,16 +85,12 @@ const LoginIn = () => {
             autoComplete="current-password"
           />
 
-          <button type="submit" style={styles.button}>
-            Login
-          </button>
+          <button type="submit" style={styles.button}>Login</button>
         </form>
 
         <p style={styles.registerText}>
           Don’t have an account?{" "}
-          <Link to="/" style={styles.link}>
-            Register here
-          </Link>
+          <Link to="/" style={styles.link}>Register here</Link>
         </p>
       </div>
     </div>
