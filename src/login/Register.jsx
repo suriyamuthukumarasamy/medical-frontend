@@ -62,9 +62,9 @@ const Register = () => {
         <form onSubmit={handleRegister} style={styles.form}>
           <label htmlFor="fullName" style={styles.label}>Name</label>
           <input
-            id="fullName"
+            id="name"
             type="text"
-            name="fullName"
+            name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
