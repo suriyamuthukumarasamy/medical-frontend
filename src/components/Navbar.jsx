@@ -74,7 +74,7 @@ const Navbar = () => {
             )}
           </Link>
           <Link to="/loginIn">
-          <button className="btn btn-danger btn-sm" onClick={handleLogout}>
+          <button className="btn btn-danger btn-sm pt-3" onClick={handleLogout}>
             <FontAwesomeIcon icon={faRightFromBracket} className="me-1" />
             Logout
           </button>
