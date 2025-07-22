@@ -49,7 +49,7 @@ const AdminDashboard = () => {
   const fetchProducts = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/medicines", {
+      const res = await axios.get("https://medical-backend-teal.vercel.app/api/medicines", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(res.data);
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
   const fetchOrders = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/orders", {
+      const res = await axios.get("https://medical-backend-teal.vercel.app/api/orders", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrders(res.data);
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
         quantity: Number(productData.quantity),
         prescriptionRequired: Boolean(productData.prescriptionRequired),
       };
-      await axios.post("http://localhost:5000/api/medicines/add", formattedData, {
+      await axios.post("https://medical-backend-teal.vercel.app/api/medicines/add", formattedData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchProducts();
@@ -117,7 +117,7 @@ const AdminDashboard = () => {
     if (!productToDelete) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/medicines/${productToDelete}`, {
+      await axios.delete(`https://medical-backend-teal.vercel.app/api/medicines/${productToDelete}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchProducts();
@@ -140,7 +140,7 @@ const AdminDashboard = () => {
         prescriptionRequired: Boolean(updatedProduct.prescriptionRequired),
       };
       await axios.put(
-        `http://localhost:5000/api/medicines/${updatedProduct._id}`,
+        `https://medical-backend-teal.vercel.app/api/medicines/${updatedProduct._id}`,
         updateData,
         {
           headers: { Authorization: `Bearer ${token}` },

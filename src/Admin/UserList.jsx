@@ -46,7 +46,7 @@ const UserList = () => {
   const fetchUsers = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/users/allusers", {
+      const res = await axios.get("https://medical-backend-teal.vercel.app/api/users/allusers", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -75,7 +75,7 @@ const UserList = () => {
     if (!userToDelete) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/users/${userToDelete}`, {
+      await axios.delete(`https://medical-backend-teal.vercel.app/api/users/${userToDelete}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchUsers();
