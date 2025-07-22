@@ -60,11 +60,11 @@ const Register = () => {
         <h2 style={styles.heading}>Create Your Account</h2>
 
         <form onSubmit={handleRegister} style={styles.form}>
-          <label htmlFor="name" style={styles.label}>Name</label>
+          <label htmlFor="fullName" style={styles.label}>Name</label>
           <input
-            id="name"
+            id="fullName"
             type="text"
-            name="name"
+            name="fullName"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"

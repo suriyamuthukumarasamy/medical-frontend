@@ -26,13 +26,17 @@ const LoginIn = () => {
 
       alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
 
-      if (user.role === "admin") {
-        navigate("/admin");
-      } else if (user.role === "customer" || user.role === "user") {
-        navigate("/home");
-      } else {
-        navigate("/");
-      }
+     if (user.role === "admin") {
+  alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
+  navigate("/admin");
+} else if (user.role === "customer" || user.role === "user") {
+  alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
+  navigate("/home");
+} else {
+  alert(`✅ Welcome ${user.name}!`);
+  navigate("/");
+}
+
 
       setTimeout(() => {
         localStorage.removeItem("token");
