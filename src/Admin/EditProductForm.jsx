@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const EditProductForm = ({ product, onUpdate, onCancel }) => {
   const [form, setForm] = useState({
     ...product,
-    expiryDate: product.expiryDate?.split("T")[0] || "", // Fix date input format
+    expiryDate: product.expiryDate?.split("T")[0] || "",
   });
 
   const handleChange = (e) => {
@@ -16,16 +16,13 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  // Ensure correct types for backend
-  const cleanedForm = {
-    ...form,
-    price: Number(form.price),
-    quantity: Number(form.quantity),
-    prescriptionRequired: Boolean(form.prescriptionRequired),
-  };
-
-    console.log("Updating product with data:", form); // For debugging
-    onUpdate(cleanedForm); // Must include _id
+    const cleanedForm = {
+      ...form,
+      price: Number(form.price),
+      quantity: Number(form.quantity),
+      prescriptionRequired: Boolean(form.prescriptionRequired),
+    };
+    onUpdate(cleanedForm);
   };
 
   return (
@@ -33,30 +30,49 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
       <h2 style={styles.heading}>Edit Product</h2>
 
       <div style={styles.field}>
-        <label style={styles.label}>Name</label>
-        <input name="name" value={form.name} onChange={handleChange} style={styles.input} required />
-      </div>
-
-      <div style={styles.field}>
-        <label style={styles.label}>Brand</label>
-        <input name="brand" value={form.brand} onChange={handleChange} style={styles.input} required />
-      </div>
-
-      <div style={styles.field}>
-        <label style={styles.label}>Expiry Date</label>
+        <label htmlFor="name" style={styles.label}>Name</label>
         <input
+          id="name"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="name"
+        />
+      </div>
+
+      <div style={styles.field}>
+        <label htmlFor="brand" style={styles.label}>Brand</label>
+        <input
+          id="brand"
+          name="brand"
+          value={form.brand}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="organization"
+        />
+      </div>
+
+      <div style={styles.field}>
+        <label htmlFor="expiryDate" style={styles.label}>Expiry Date</label>
+        <input
+          id="expiryDate"
           name="expiryDate"
           type="date"
           value={form.expiryDate}
           onChange={handleChange}
           style={styles.input}
           required
+          autoComplete="bday"
         />
       </div>
 
       <div style={styles.fieldCheckbox}>
         <label style={styles.label}>
           <input
+            id="prescriptionRequired"
             type="checkbox"
             name="prescriptionRequired"
             checked={form.prescriptionRequired}
@@ -67,28 +83,70 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
       </div>
 
       <div style={styles.field}>
-        <label style={styles.label}>Price</label>
-        <input name="price" type="number" value={form.price} onChange={handleChange} style={styles.input} required />
+        <label htmlFor="price" style={styles.label}>Price</label>
+        <input
+          id="price"
+          name="price"
+          type="number"
+          value={form.price}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="off"
+        />
       </div>
 
       <div style={styles.field}>
-        <label style={styles.label}>Category</label>
-        <input name="category" value={form.category} onChange={handleChange} style={styles.input} required />
+        <label htmlFor="category" style={styles.label}>Category</label>
+        <input
+          id="category"
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="off"
+        />
       </div>
 
       <div style={styles.field}>
-        <label style={styles.label}>Quantity</label>
-        <input name="quantity" type="number" value={form.quantity} onChange={handleChange} style={styles.input} required />
+        <label htmlFor="quantity" style={styles.label}>Quantity</label>
+        <input
+          id="quantity"
+          name="quantity"
+          type="number"
+          value={form.quantity}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="off"
+        />
       </div>
 
       <div style={styles.field}>
-        <label style={styles.label}>Description</label>
-        <textarea name="description" value={form.description} onChange={handleChange} style={styles.textarea} required />
+        <label htmlFor="description" style={styles.label}>Description</label>
+        <textarea
+          id="description"
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          style={styles.textarea}
+          required
+          autoComplete="off"
+        />
       </div>
 
       <div style={styles.field}>
-        <label style={styles.label}>Image URL</label>
-        <input name="image" value={form.image} onChange={handleChange} style={styles.input} required />
+        <label htmlFor="image" style={styles.label}>Image URL</label>
+        <input
+          id="image"
+          name="image"
+          value={form.image}
+          onChange={handleChange}
+          style={styles.input}
+          required
+          autoComplete="url"
+        />
       </div>
 
       <div style={styles.buttonGroup}>
@@ -99,6 +157,7 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
   );
 };
 
+// Styles remain unchanged
 const styles = {
   form: {
     backgroundColor: "#fff",

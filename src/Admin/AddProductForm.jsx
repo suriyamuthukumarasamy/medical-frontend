@@ -46,7 +46,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Name */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Name</label>
+          <label htmlFor="name" style={styles.label}>Name</label>
           <input
             type="text"
             name="name"
@@ -60,7 +60,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Brand */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Brand</label>
+          <label htmlFor="brand" style={styles.label}>Brand</label>
           <input
             type="text"
             name="brand"
@@ -74,7 +74,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Expiry Date */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Expiry Date</label>
+          <label htmlFor="expiryDate" style={styles.label}>Expiry Date</label>
           <input
             type="date"
             name="expiryDate"
@@ -93,12 +93,12 @@ const AddProductForm = ({ onAdd }) => {
             checked={form.prescriptionRequired}
             onChange={handleChange}
           />
-          <label style={{ marginLeft: "8px" }}>Prescription Required</label>
+          <label htmlFor="prescriptionRequired" style={{ marginLeft: "8px" }}>Prescription Required</label>
         </div>
 
         {/* Price */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Price (₹)</label>
+          <label htmlFor="price" style={styles.label}>Price (₹)</label>
           <input
             type="number"
             name="price"
@@ -112,7 +112,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Category */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Category</label>
+          <label  htmlFor="category" style={styles.label}>Category</label>
           <input
             type="text"
             name="category"
@@ -126,7 +126,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Quantity */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Quantity</label>
+          <label htmlFor="quantity" style={styles.label}>Quantity</label>
           <input
             type="number"
             name="quantity"
@@ -140,7 +140,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Description */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Description</label>
+          <label htmlFor="description" style={styles.label}>Description</label>
           <textarea
             name="description"
             value={form.description}
@@ -153,7 +153,7 @@ const AddProductForm = ({ onAdd }) => {
 
         {/* Image */}
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Image URL</label>
+          <label htmlFor="image" style={styles.label}>Image URL</label>
           <input
             type="text"
             name="image"
