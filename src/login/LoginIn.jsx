@@ -32,14 +32,14 @@ const LoginIn = () => {
       let message = `✅ Welcome ${user.name}! You are logged in as ${user.role}.`;
 
       if (user.role === "admin") {
-        alert(message);
         navigate("/admin");
+        alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
       } else if (user.role === "customer" || user.role === "user") {
-        alert(message);
         navigate("/home");
+        alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
       } else {
-        alert(`✅ Welcome ${user.name}!`);
         navigate("/");
+        alert(`✅ Welcome ${user.name}!`);
       }
 
       setTimeout(() => {
