@@ -60,7 +60,7 @@ const Register = () => {
         <h2 style={styles.heading}>Create Your Account</h2>
 
         <form onSubmit={handleRegister} style={styles.form}>
-          <label htmlFor="fullName" style={styles.label}>Name</label>
+          <label htmlFor="name" style={styles.label}>Name</label>
           <input
             id="name"
             type="text"
@@ -104,16 +104,14 @@ const Register = () => {
           </button>
 
           {successMessage && <div style={styles.success}>{successMessage}</div>}
-          {errorMessage && (
-            <div style={styles.error}>
-              {errorMessage}
-              <br />
-              <Link to="/loginIn" style={styles.link}>
-                Already have an account? Login
-              </Link>
-            </div>
-          )}
+          {errorMessage && <div style={styles.error}>{errorMessage}</div>}
         </form>
+
+        <div style={{ marginTop: "15px", textAlign: "center" }}>
+          <Link to="/loginIn" style={styles.link}>
+            Already have an account? Login
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -193,8 +191,6 @@ const styles = {
     textAlign: "center",
   },
   link: {
-    display: "block",
-    marginTop: "10px",
     fontSize: "14px",
     color: "#007bff",
     textDecoration: "underline",

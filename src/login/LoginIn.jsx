@@ -26,23 +26,25 @@ const LoginIn = () => {
 
       alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
 
-      // Navigate immediately after alert
-      if (user.role === "admin") {
-        navigate("/admin");
-      } else if (user.role === "customer" || user.role === "user") {
-        navigate("/home");
-      } else {
-        navigate("/");
-      }
+      // Delay navigation slightly after alert
+      setTimeout(() => {
+        if (user.role === "admin") {
+          navigate("/admin");
+        } else if (user.role === "customer" || user.role === "user") {
+          navigate("/home");
+        } else {
+          navigate("/");
+        }
+      }, 100);
 
-      // Set session expiration
+      // Session timeout logic
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("token_expiry");
         localStorage.removeItem("user");
         alert("Session expired. Please log in again.");
         navigate("/loginIn");
-      }, 60 * 60 * 1000);
+      }, 60 * 60 * 1000); // 1 hour
     } catch (err) {
       console.error("Login error:", err);
       const message =
