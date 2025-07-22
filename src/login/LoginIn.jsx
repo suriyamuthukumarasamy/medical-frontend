@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-const LoginIn = () => {
+const LoginIn = ({ setIsAuthenticated, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
@@ -20,31 +20,37 @@ const LoginIn = () => {
       const { token, user } = res.data;
       const expiresAt = Date.now() + 60 * 60 * 1000; // 1 hour
 
+      // Store in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("token_expiry", expiresAt);
       localStorage.setItem("user", JSON.stringify(user));
 
+      // 🔑 Update auth state in App.js
+      setIsAuthenticated(true);
+      setRole(user.role);
+
       alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
 
-      // Delay navigation slightly after alert
-      setTimeout(() => {
-        if (user.role === "admin") {
-          navigate("/admin");
-        } else if (user.role === "customer" || user.role === "user") {
-          navigate("/home");
-        } else {
-          navigate("/");
-        }
-      }, 100);
+      // ✅ Navigate immediately (no delay)
+      if (user.role === "admin") {
+        navigate("/admin");
+      } else if (user.role === "customer" || user.role === "user") {
+        navigate("/home");
+      } else {
+        navigate("/");
+      }
 
-      // Session timeout logic
+      // Session timeout logic (optional)
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("token_expiry");
         localStorage.removeItem("user");
         alert("Session expired. Please log in again.");
         navigate("/loginIn");
+        setIsAuthenticated(false);
+        setRole(null);
       }, 60 * 60 * 1000); // 1 hour
+
     } catch (err) {
       console.error("Login error:", err);
       const message =

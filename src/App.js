@@ -54,7 +54,11 @@ function App() {
 
       <Routes>
         {/* Public Routes */}
-        <Route path="/loginIn" element={<LoginIn />} />
+        <Route
+          path="/loginIn"
+          element={<LoginIn setIsAuthenticated={setIsAuthenticated} setRole={setRole} />}
+        />
+
         <Route path="/" element={<Register />} />
 
         {/* Protected Routes */}
