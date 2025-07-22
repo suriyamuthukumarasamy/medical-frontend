@@ -12,10 +12,13 @@ const LoginIn = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://medical-backend-teal.vercel.app/api/users/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://medical-backend-teal.vercel.app/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
 
       const { token, user } = res.data;
       const expiresAt = Date.now() + 60 * 60 * 1000; // 1 hour
@@ -26,17 +29,18 @@ const LoginIn = () => {
 
       alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
 
-     if (user.role === "admin") {
-  alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
-  navigate("/admin");
-} else if (user.role === "customer" || user.role === "user") {
-  alert(`✅ Welcome ${user.name}! You are logged in as ${user.role}.`);
-  navigate("/home");
-} else {
-  alert(`✅ Welcome ${user.name}!`);
-  navigate("/");
-}
+      let message = `✅ Welcome ${user.name}! You are logged in as ${user.role}.`;
 
+      if (user.role === "admin") {
+        alert(message);
+        navigate("/admin");
+      } else if (user.role === "customer" || user.role === "user") {
+        alert(message);
+        navigate("/home");
+      } else {
+        alert(`✅ Welcome ${user.name}!`);
+        navigate("/");
+      }
 
       setTimeout(() => {
         localStorage.removeItem("token");
@@ -60,12 +64,12 @@ const LoginIn = () => {
       <div style={styles.card}>
         <h2 style={styles.heading}>Login to Your Account</h2>
 
-        {errorMessage && (
-          <div style={styles.errorBox}>{errorMessage}</div>
-        )}
+        {errorMessage && <div style={styles.errorBox}>{errorMessage}</div>}
 
         <form onSubmit={handleLogin} style={styles.form} autoComplete="on">
-          <label htmlFor="email" style={styles.label}>Email</label>
+          <label htmlFor="email" style={styles.label}>
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -77,7 +81,9 @@ const LoginIn = () => {
             autoComplete="email"
           />
 
-          <label htmlFor="password" style={styles.label}>Password</label>
+          <label htmlFor="password" style={styles.label}>
+            Password
+          </label>
           <input
             type="password"
             id="password"
