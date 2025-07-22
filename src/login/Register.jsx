@@ -29,20 +29,12 @@ const Register = () => {
     try {
       const response = await axios.post(
         "https://medical-backend-teal.vercel.app/api/users/register",
-        formData,
-        // { withCredentials: true }
+        formData
       );
 
       if (response.status === 200 || response.status === 201) {
         setSuccessMessage("✅ Registered successfully! Redirecting to login...");
-        // Optional: Clear the form
-        setFormData({
-          name: "",
-          email: "",
-          password: "",
-          role: "customer",
-        });
-        // Redirect after 2 seconds
+        setFormData({ name: "", email: "", password: "", role: "customer" });
         setTimeout(() => {
           navigate("/loginIn");
         }, 2000);
@@ -68,38 +60,42 @@ const Register = () => {
         <h2 style={styles.heading}>Create Your Account</h2>
 
         <form onSubmit={handleRegister} style={styles.form}>
-          <label style={styles.label}>Name</label>
+          <label htmlFor="name" style={styles.label}>Name</label>
           <input
+            id="name"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
+            autoComplete="name"
             style={styles.input}
             required
           />
 
-          <label style={styles.label}>Email</label>
+          <label htmlFor="email" style={styles.label}>Email</label>
           <input
+            id="email"
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
+            autoComplete="email"
             style={styles.input}
-            autoComplete="username"
             required
           />
 
-          <label style={styles.label}>Password</label>
+          <label htmlFor="password" style={styles.label}>Password</label>
           <input
+            id="password"
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             placeholder="Create a password"
+            autoComplete="new-password"
             style={styles.input}
-            autoComplete="current-password"
             required
           />
 
@@ -107,12 +103,7 @@ const Register = () => {
             Register
           </button>
 
-          {successMessage && (
-            <div style={styles.success}>
-              {successMessage}
-            </div>
-          )}
-
+          {successMessage && <div style={styles.success}>{successMessage}</div>}
           {errorMessage && (
             <div style={styles.error}>
               {errorMessage}
