@@ -61,9 +61,10 @@ const LoginIn = () => {
         )}
 
         <form onSubmit={handleLogin} style={styles.form} autoComplete="on">
-          <label style={styles.label}>Email</label>
+          <label htmlFor="email" style={styles.label}>Email</label>
           <input
             type="email"
+            id="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -72,9 +73,10 @@ const LoginIn = () => {
             autoComplete="email"
           />
 
-          <label style={styles.label}>Password</label>
+          <label htmlFor="password" style={styles.label}>Password</label>
           <input
             type="password"
+            id="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

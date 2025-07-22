@@ -13,7 +13,7 @@ const AdminOrderTable = () => {
   const fetchOrders = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/orders", {
+      const res = await axios.get("https://medical-backend-teal.vercel.app/api/orders", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -31,7 +31,7 @@ const AdminOrderTable = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+      await axios.delete(`https://medical-backend-teal.vercel.app/api/orders/${orderId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

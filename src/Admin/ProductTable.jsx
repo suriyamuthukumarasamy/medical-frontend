@@ -4,7 +4,7 @@ import AdminNavbar from "./AdminNavbar"; //  Import AdminNavbar here
 const ProductTable = ({ products, onDelete, onEdit }) => {
   return (
     <>
-      <AdminNavbar /> {/*  Show navbar above the table */}
+      <AdminNavbar /> 
 
       <div>
         
